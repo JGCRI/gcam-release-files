@@ -1,16 +1,16 @@
 #!/bin/bash
 
-WORKSPACE=~/model/gcam-github
+WORKSPACE=~/model/gcam-china
 RELEASE_FILES=~/model/gcam-release-files
 GCAM_VERSION='6.0'
 cd $WORKSPACE
 
 # git remote add stash https://stash.pnnl.gov/scm/jgcri/gcam-core.git
 # git pull stash master
-# git tag gcam-v${GCAM_VERSION}
-# git push stash gcam-v${GCAM_VERSION}
+# git tag gcam-china-v${GCAM_VERSION}
+# git push stash gcam-china-v${GCAM_VERSION}
 # git push origin master
-# git push origin gcam-v${GCAM_VERSION}
+# git push origin gcam-china-v${GCAM_VERSION}
 
 # Clean exe
 rm -rf input/gcamdata/.drake
@@ -18,7 +18,7 @@ rm -rf input/gcamdata/renv/library
 rm -f exe/debug*
 rm -f exe/logs/*
 rm -f exe/restart/*
-cp exe/configuration_ref.xml exe/configuration.xml
+#cp exe/configuration_ref.xml exe/configuration.xml
 touch exe/.basexhome
 
 cp "${RELEASE_FILES}/Mac/run-gcam.command" ./exe/
@@ -35,4 +35,4 @@ for f in `cat ${RELEASE_FILES}/Mac/mac_files`; do find $f -type f | grep -v '.ba
 unset IFS
 echo 'libs/java' >> file_list_expanded
 # TODO: automate checks to ensure no proprietary data
-zip -y gcam-v${GCAM_VERSION}-Mac-Release-Package.zip -@ < file_list_expanded
+zip -y gcam-china-v${GCAM_VERSION}-Mac-Release-Package.zip -@ < file_list_expanded
